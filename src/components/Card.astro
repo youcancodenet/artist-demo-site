@@ -37,7 +37,6 @@ const tracks = [
         </div>
     </div>
 
-    <!-- Audio Player -->
     <div class="player-container">
         <div class="player-header">
             <i class="bi bi-music-note-beamed"></i>
@@ -100,19 +99,26 @@ const tracks = [
         return `${m}:${sec}`;
     }
 
+    function setActiveTrack(index) {
+        trackItems.forEach((t, i) => {
+            t.classList.toggle('active', i === index);
+            t.querySelector('.track-play-btn i').className = 'bi bi-play-fill';
+        });
+        trackItems[index].querySelector('.track-play-btn i').className = 'bi bi-pause-fill';
+    }
+
     function loadTrack(index) {
         currentIndex = index;
         audio.src = tracks[index].src;
         nowPlayingText.textContent = `${tracks[index].title} — ${tracks[index].venue}`;
-        trackItems.forEach((t, i) => t.classList.toggle('active', i === index));
-        trackItems.forEach(t => t.querySelector('.track-play-btn i').className = 'bi bi-play-fill');
+        setActiveTrack(index);
         audio.play();
         playPauseBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
-        trackItems[index].querySelector('.track-play-btn i').className = 'bi bi-pause-fill';
     }
 
+    // Clicking anywhere on track row plays it
     trackItems.forEach((item, i) => {
-        item.querySelector('.track-play-btn').addEventListener('click', () => {
+        item.addEventListener('click', () => {
             if (currentIndex === i && !audio.paused) {
                 audio.pause();
                 playPauseBtn.innerHTML = '<i class="bi bi-play-fill"></i>';
