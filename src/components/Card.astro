@@ -112,7 +112,16 @@ const tracks = [
         audio.src = tracks[index].src;
         nowPlayingText.textContent = `${tracks[index].title} — ${tracks[index].venue}`;
         setActiveTrack(index);
+        audio.volume = 0;
         audio.play();
+        let fadeIn = setInterval(() => {
+            if (audio.volume < 0.95) {
+                audio.volume = Math.min(1, audio.volume + 0.05);
+            } else {
+                audio.volume = 1;
+                clearInterval(fadeIn);
+            }
+        }, 100);
         playPauseBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
     }
 
