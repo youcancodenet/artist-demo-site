@@ -344,3 +344,16 @@ p {
     padding: 1rem;
     gap: 1rem;
 }
+
+.ep-number {
+    font-family: 'Special Elite', cursive;
+    color: rgba(201,162,39,0.5);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    min-width: 2rem;
+    padding-right: 0.5rem;
+}
+
+.track-item.active .ep-number {
+    color: #c9a227;
+}
