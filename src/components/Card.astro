@@ -7,30 +7,26 @@ import '../styles/card.css';
         <div class="descripcion">
             <h1>{name}</h1>
             <h2>{position}</h2>
-            <p>{aboutMe}</p>
             <div class="icons">
                 <a href={spotify} class="hover-text" target="_blank">
-                    <span class="tooltip-text" id="fade">
-                        Spotify
-                    </span>
+                    <span class="tooltip-text" id="fade">Spotify</span>
                     <i class="bi bi-spotify"></i>
                 </a>
                 <a href={instagram} class="hover-text" target="_blank">
-                    <span class="tooltip-text" id="fade">
-                        Instagram
-                    </span>
+                    <span class="tooltip-text" id="fade">Instagram</span>
                     <i class="bi bi-instagram"></i>
                 </a>
+            </div>
+            <p>{aboutMe}</p>
+            <div class="bookings-link">
+                <span class="bookings-label">For Bookings & Inquiries:</span>
                 <a href={bookings} class="hover-text">
-                    <span class="tooltip-text" id="fade">
-                        Bookings
-                    </span>
                     <i class="bi bi-envelope"></i>
                 </a>
             </div>
         </div>
         <div class="image">
-            <img src={profileImage} alt="">
+            <img src={profileImage} alt="Ben Kappes">
         </div>
     </div>
 </div>
