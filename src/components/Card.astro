@@ -5,94 +5,68 @@ import '../styles/card.css';
 const base = import.meta.env.BASE_URL;
 
 const tracks = [
-  { number: "A1", title: "Stranger to Many", venue: "Irish Pub, Cocoa Beach FL", date: "2024", src: `${base}files/Ben Kappes - Stranger to Many (Irish Pub, Cocoa Beach, FL).mp3` },
-  { number: "A2", title: "Stranger to Many", venue: "Fainting Goat Brewery", date: "05/2026", src: `${base}files/Ben Kappes - Stranger to Many (Fainting Goat Brewery).mp3` },
-];
-
-const trackInfo = [
-  {
-    number: "A1",
-    title: "Stranger to Many",
-    performer: "Ben Kappes",
-    venue: "Irish Pub, Cocoa Beach, FL",
-    type: "Live",
-    date: "2024",
-    lyrics: `I'm a stranger to many, I'm a friend to only a few
-As I get on this train called life, Lord, well all I can do is follow you
-You punched my number, you called my name
-And now the only thing left to do is to follow, to follow and obey
-Well as a boy I learned that you died between two thieves
-On that old rugged cross, high on Calvary
-I'm a stranger to many, I'm a friend to only a few
-I get on this train called my will, Lord, all I can do is follow Him
-Well I'm surely just a sinner, yeah I'm surely not a saint
-But maybe one day I will make it into those white pearly gates
-Yeah I'm surely just a sinner, yeah I'm surely not a saint
-But maybe one day I will make it through those wide plains
-I'm a stranger man, I'm a friend to only a few
-As I get on this train called life, all I can do is follow you
-Yeah, all I can do is follow you`
-  },
-  {
-    number: "A2",
-    title: "Stranger to Many",
-    performer: "Ben Kappes",
-    venue: "Fainting Goat Brewery",
-    type: "Live",
-    date: "05/2026",
-    lyrics: `I'm a stranger to many, I'm a friend to only a few
-As I get on this train called life, Lord, well all I can do is follow you
-You punched my number, you called my name
-And now the only thing left to do is to follow, to follow and obey
-Well as a boy I learned that you died between two thieves
-On that old rugged cross, high on Calvary
-I'm a stranger to many, I'm a friend to only a few
-I get on this train called my will, Lord, all I can do is follow Him
-Well I'm surely just a sinner, yeah I'm surely not a saint
-But maybe one day I will make it into those white pearly gates
-Yeah I'm surely just a sinner, yeah I'm surely not a saint
-But maybe one day I will make it through those wide plains
-I'm a stranger man, I'm a friend to only a few
-As I get on this train called life, all I can do is follow you
-Yeah, all I can do is follow you`
-  }
+  { title: "Stranger to Many (Mastered)", venue: "Irish Pub, Cocoa Beach FL", date: "2024", src: `${base}files/Ben Kappes - Stranger to Many (Irish Pub, Cocoa Beach, FL).mp3` },
+  { title: "Stranger to Many", venue: "Fainting Goat Brewery", date: "05/2026", src: `${base}files/Ben Kappes - Stranger to Many (Fainting Goat Brewery).mp3` },
 ];
 ---
+
 <div class="container">
 
     <div class="player-container">
         <div class="player-header">
             <i class="bi bi-music-note-beamed"></i>
-            <span>Live Recordings — Vol. I</span>
+            <span>Live Recordings</span>
         </div>
+
         <div class="track-list">
             {tracks.map((track, i) => (
                 <div class="track-item" data-src={track.src} data-index={i}>
-                    <span class="ep-number">{track.number}</span>
                     <div class="track-info">
                         <span class="track-title">{track.title}</span>
-                        <span class="track-venue">{track.venue} &middot; {track.date}</span>
+                        <span class="track-venue">{track.venue}</span>
                     </div>
+
                     <button class="track-play-btn" aria-label="Play">
                         <i class="bi bi-play-fill"></i>
                     </button>
                 </div>
             ))}
         </div>
+
         <div class="player-controls">
             <audio id="audio-player" preload="none"></audio>
+
             <div class="now-playing">
                 <span id="now-playing-text">Select a track</span>
             </div>
+
             <div class="progress-bar-wrap">
                 <span id="current-time">0:00</span>
-                <input type="range" id="progress" value="0" min="0" max="100" step="0.1">
+
+                <input
+                    type="range"
+                    id="progress"
+                    value="0"
+                    min="0"
+                    max="100"
+                    step="0.1"
+                >
+
                 <span id="duration">0:00</span>
             </div>
+
             <div class="control-btns">
-                <button id="prev-btn"><i class="bi bi-skip-start-fill"></i></button>
-                <button id="play-pause-btn"><i class="bi bi-play-fill"></i></button>
-                <button id="next-btn"><i class="bi bi-skip-end-fill"></i></button>
+                <button id="prev-btn">
+                    <i class="bi bi-skip-start-fill"></i>
+                </button>
+
+                <button id="play-pause-btn">
+                    <i class="bi bi-play-fill"></i>
+                </button>
+
+                <button id="next-btn">
+                    <i class="bi bi-skip-end-fill"></i>
+                </button>
             </div>
         </div>
     </div>
@@ -101,56 +75,48 @@ Yeah, all I can do is follow you`
         <div class="descripcion">
             <h1>{name}</h1>
             <h2>{position}</h2>
+
             <div class="icons">
                 <a href={spotify} class="hover-text" target="_blank">
                     <span class="tooltip-text" id="fade">Spotify</span>
                     <i class="bi bi-spotify"></i>
                 </a>
+
                 <a href={instagram} class="hover-text" target="_blank">
                     <span class="tooltip-text" id="fade">Instagram</span>
                     <i class="bi bi-instagram"></i>
                 </a>
             </div>
+
             <p>{aboutMe}</p>
+
             <div class="bookings-link">
                 <span class="bookings-label">For Bookings & Inquiries:</span>
+
                 <a href={bookings} class="hover-text">
                     <i class="bi bi-envelope"></i>
                 </a>
             </div>
         </div>
+
         <div class="image">
             <img src={profileImage} alt="Ben Kappes">
         </div>
     </div>
-
-    {trackInfo.map((t, i) => (
-        <div class="lyrics-container" id={`track-info-${t.number}`}>
-            <div class="lyrics-header">
-                <span class="track-number">Track {t.number}</span>
-                <div class="lyrics-meta">
-                    <div class="meta-row"><span class="meta-label">Song Title</span><span class="meta-value">{t.title}</span></div>
-                    <div class="meta-row"><span class="meta-label">Performer</span><span class="meta-value">{t.performer}</span></div>
-                    <div class="meta-row"><span class="meta-label">Venue</span><span class="meta-value">{t.venue}</span></div>
-                    <div class="meta-row"><span class="meta-label">Recording</span><span class="meta-value">{t.type}</span></div>
-                    <div class="meta-row"><span class="meta-label">Date</span><span class="meta-value">{t.date}</span></div>
-                </div>
-            </div>
-            <div class="lyrics-divider"></div>
-            <div class="lyrics-body">
-                {t.lyrics.split('\n').map((line) => (
-                    <p class="lyric-line">{line}</p>
-                ))}
-            </div>
-        </div>
-    ))}
-
 </div>
 
 <script>
     const tracks = [
-        { title: "Stranger to Many", venue: "Irish Pub, Cocoa Beach FL", src: document.querySelector('[data-index="0"]')?.dataset.src },
-        { title: "Stranger to Many", venue: "Fainting Goat Brewery", src: document.querySelector('[data-index="1"]')?.dataset.src },
+        {
+            title: "Stranger to Many (Mastered)",
+            venue: "Irish Pub, Cocoa Beach FL",
+            src: document.querySelector('[data-index="0"]')?.dataset.src
+        },
+        {
+            title: "Stranger to Many",
+            venue: "Fainting Goat Brewery",
+            src: document.querySelector('[data-index="1"]')?.dataset.src
+        },
     ];
 
     const audio = document.getElementById('audio-player');
@@ -162,14 +128,15 @@ Yeah, all I can do is follow you`
     const durationEl = document.getElementById('duration');
     const nowPlayingText = document.getElementById('now-playing-text');
     const trackItems = document.querySelectorAll('.track-item');
-    const lyricsPanels = document.querySelectorAll('.lyrics-container');
 
     let currentIndex = -1;
 
     function formatTime(s) {
         if (isNaN(s)) return '0:00';
+
         const m = Math.floor(s / 60);
         const sec = Math.floor(s % 60).toString().padStart(2, '0');
+
         return `${m}:${sec}`;
     }
 
@@ -178,17 +145,25 @@ Yeah, all I can do is follow you`
             t.classList.toggle('active', i === index);
             t.querySelector('.track-play-btn i').className = 'bi bi-play-fill';
         });
-        trackItems[index].querySelector('.track-play-btn i').className = 'bi bi-pause-fill';
-        lyricsPanels.forEach((p, i) => p.classList.toggle('active', i === index));
+
+        trackItems[index]
+            .querySelector('.track-play-btn i')
+            .className = 'bi bi-pause-fill';
     }
 
     function loadTrack(index) {
         currentIndex = index;
+
         audio.src = tracks[index].src;
-        nowPlayingText.textContent = `${tracks[index].title} — ${tracks[index].venue}`;
+
+        nowPlayingText.textContent =
+            `${tracks[index].title} — ${tracks[index].venue}`;
+
         setActiveTrack(index);
+
         audio.volume = 0;
         audio.play();
+
         let fadeIn = setInterval(() => {
             if (audio.volume < 0.95) {
                 audio.volume = Math.min(1, audio.volume + 0.05);
@@ -197,15 +172,21 @@ Yeah, all I can do is follow you`
                 clearInterval(fadeIn);
             }
         }, 100);
+
         playPauseBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
     }
 
+    // Clicking anywhere on track row plays it
     trackItems.forEach((item, i) => {
         item.addEventListener('click', () => {
             if (currentIndex === i && !audio.paused) {
                 audio.pause();
-                playPauseBtn.innerHTML = '<i class="bi bi-play-fill"></i>';
-                item.querySelector('.track-play-btn i').className = 'bi bi-play-fill';
+
+                playPauseBtn.innerHTML =
+                    '<i class="bi bi-play-fill"></i>';
+
+                item.querySelector('.track-play-btn i').className =
+                    'bi bi-play-fill';
             } else {
                 loadTrack(i);
             }
@@ -213,31 +194,56 @@ Yeah, all I can do is follow you`
     });
 
     playPauseBtn.addEventListener('click', () => {
-        if (currentIndex === -1) { loadTrack(0); return; }
+        if (currentIndex === -1) {
+            loadTrack(0);
+            return;
+        }
+
         if (audio.paused) {
             audio.play();
-            playPauseBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
-            trackItems[currentIndex].querySelector('.track-play-btn i').className = 'bi bi-pause-fill';
+
+            playPauseBtn.innerHTML =
+                '<i class="bi bi-pause-fill"></i>';
+
+            trackItems[currentIndex]
+                .querySelector('.track-play-btn i')
+                .className = 'bi bi-pause-fill';
         } else {
             audio.pause();
-            playPauseBtn.innerHTML = '<i class="bi bi-play-fill"></i>';
-            trackItems[currentIndex].querySelector('.track-play-btn i').className = 'bi bi-play-fill';
+
+            playPauseBtn.innerHTML =
+                '<i class="bi bi-play-fill"></i>';
+
+            trackItems[currentIndex]
+                .querySelector('.track-play-btn i')
+                .className = 'bi bi-play-fill';
         }
     });
 
-    prevBtn.addEventListener('click', () => loadTrack((currentIndex - 1 + tracks.length) % tracks.length));
-    nextBtn.addEventListener('click', () => loadTrack((currentIndex + 1) % tracks.length));
+    prevBtn.addEventListener('click', () =>
+        loadTrack((currentIndex - 1 + tracks.length) % tracks.length)
+    );
+
+    nextBtn.addEventListener('click', () =>
+        loadTrack((currentIndex + 1) % tracks.length)
+    );
 
     audio.addEventListener('timeupdate', () => {
         if (audio.duration) {
-            progress.value = (audio.currentTime / audio.duration) * 100;
-            currentTimeEl.textContent = formatTime(audio.currentTime);
-            durationEl.textContent = formatTime(audio.duration);
+            progress.value =
+                (audio.currentTime / audio.duration) * 100;
+
+            currentTimeEl.textContent =
+                formatTime(audio.currentTime);
+
+            durationEl.textContent =
+                formatTime(audio.duration);
         }
     });
 
     progress.addEventListener('input', () => {
-        audio.currentTime = (progress.value / 100) * audio.duration;
+        audio.currentTime =
+            (progress.value / 100) * audio.duration;
     });
 
     audio.addEventListener('ended', () => {
