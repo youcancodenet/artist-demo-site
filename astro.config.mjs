@@ -1,8 +1,7 @@
 import { defineConfig } from 'astro/config';
 
+// https://astro.build/config
 export default defineConfig({
-  // Your root custom domain
-  site: 'https://youcancode.net',
-  // Your repo-specific subpath
-  base: '/artist-demo-site/',
+  site: 'https://brokensoulmusic.com',
+  base: '/',
 });
